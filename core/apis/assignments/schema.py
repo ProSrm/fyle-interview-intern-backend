@@ -15,7 +15,7 @@ class AssignmentSchema(SQLAlchemyAutoSchema):
     created_at = auto_field(dump_only=True)
     updated_at = auto_field(dump_only=True)
     teacher_id = auto_field(dump_only=True)
-    student_id = auto_field(dump_only=True)
+    student_id = auto_field(dump_only=True) 
     grade = auto_field(dump_only=True)
     state = auto_field(dump_only=True)
 

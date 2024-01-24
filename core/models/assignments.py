@@ -4,6 +4,8 @@ from core.apis.decorators import AuthPrincipal
 from core.libs import helpers, assertions
 from core.models.teachers import Teacher
 from core.models.students import Student
+from core.models.principals import Principal
+
 from sqlalchemy.types import Enum as BaseEnum
 
 
@@ -12,7 +14,6 @@ class GradeEnum(str, enum.Enum):
     B = 'B'
     C = 'C'
     D = 'D'
-
 
 class AssignmentStateEnum(str, enum.Enum):
     DRAFT = 'DRAFT'
@@ -67,6 +68,7 @@ class Assignment(db.Model):
         assertions.assert_valid(assignment.content is not None, 'assignment with empty content cannot be submitted')
 
         assignment.teacher_id = teacher_id
+        assignment.state = AssignmentStateEnum.SUBMITTED
         db.session.flush()
 
         return assignment
