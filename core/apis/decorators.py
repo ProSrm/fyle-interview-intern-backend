@@ -3,7 +3,6 @@ from flask import request
 from core.libs import assertions
 from functools import wraps
 
-
 class AuthPrincipal:
     def __init__(self, user_id, student_id=None, teacher_id=None, principal_id=None):
         self.user_id = user_id

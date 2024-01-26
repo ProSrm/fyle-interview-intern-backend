@@ -22,8 +22,9 @@ def list_assignments(p):
 @decorators.authenticate_principal
 def grade_assignment(p, incoming_payload):
     """Grade an assignment"""
+    print("Incoming Payload:", incoming_payload)
     grade_assignment_payload = AssignmentGradeSchema().load(incoming_payload)
-
+    print("Loaded Payload:", grade_assignment_payload)
     graded_assignment = Assignment.mark_grade(
         _id=grade_assignment_payload.id,
         grade=grade_assignment_payload.grade,
